@@ -8,7 +8,10 @@
                 <div class="user-block">
                     <img class="img-circle" src="{{ asset('user.jpg') }}" alt="User Image">
                     <span class="username"><a href="#">Outorgado: {{ $atendimento->user->name }}</a></span>
-                    <span class="username"><a href="#">Outorgante: {{ $atendimento->terceiro->name }}</a></span>
+                    @if (isset($atendimento->terceiro_id))
+                        <span class="username"><a href="#">Outorgante: {{ $atendimento->terceiro->name }}</a></span>
+                    @endif
+
 
                 </div>
 
