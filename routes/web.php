@@ -128,7 +128,7 @@ Route::get('terceiro/create', function () {
 Route::post('terceiro', function (HttpRequest $request) {
     $request->validate([
         'name' => 'required',
-        'cpf' => 'required',
+        'cpf' => 'required|cpf',
         'telefone' => 'required',
         'email' => 'required',
     ]);
