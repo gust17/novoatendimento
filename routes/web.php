@@ -222,7 +222,7 @@ Route::get('recepcao/cadusuario/setor/{id}', function ($id) {
 Route::post('recepcao/caduser', function (HttpRequest $request) {
     $request->validate([
         'name' => ['required'],
-        'email' => ['required'],
+        'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
         'rg' => ['required'],
         'cpf' => ['required'],
     ]);
