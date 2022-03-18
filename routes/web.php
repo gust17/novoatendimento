@@ -170,6 +170,11 @@ Route::get('recepcao/abrir/{id}', function ($id) {
 });
 
 Route::post('buscarcpf', function (HttpRequest $request) {
+    $request->validate([
+
+        'cpf' => ['required', 'cpf', 'unique:users'],
+    ]);
+
     $usuario = User::where('cpf', $request->cpf)->first();
     $setor = Setor::find($request->setor_id);
 
