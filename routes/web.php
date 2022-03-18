@@ -224,7 +224,7 @@ Route::post('recepcao/caduser', function (HttpRequest $request) {
         'name' => ['required'],
         'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
         'rg' => ['required'],
-        'cpf' => ['required'],
+        'cpf' => ['required', 'cpf', 'unique:users'],
     ]);
 
     $request['password'] = bcrypt($request->cpf);
