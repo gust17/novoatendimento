@@ -77,7 +77,8 @@ Route::get('/dashboard', function () {
     if (Auth::user()->tipo == 1) {
         return redirect(url('usuarios'));
     }
-    return view('cidadao.index', compact('setores'));
+
+    return redirect(url('/'));
 })->middleware(['auth'])->name('dashboard');
 
 
