@@ -175,6 +175,7 @@ Route::post('buscarcpf', function (HttpRequest $request) {
         'cpf' => ['required', 'cpf'],
     ]);
 
+    $request['cpf'] = preg_replace("/[^0-9]/", "", $request->cpf);
     $usuario = User::where('cpf', $request->cpf)->first();
     $setor = Setor::find($request->setor_id);
 
@@ -233,7 +234,7 @@ Route::post('recepcao/caduser', function (HttpRequest $request) {
     ]);
 
     $request['password'] = bcrypt($request->cpf);
-
+    $request['cpf'] = preg_replace("/[^0-9]/", "", $request->cpf);
     $user = User::create($request->all());
 
     $gravaagenda = [
@@ -294,6 +295,12 @@ Route::post('admin/user/edit', function (HttpRequest $request) {
     $user->save();
 
     return redirect(url('usuarios'))->with('success', 'Usuario atualizado com sucesso');;
+});
+
+Route::get('admin/agenda/delete/{id}', function ($id) {
+    Agenda::destroy($id);
+
+    return redirect()->back()->with('success', 'Agenda deletada com sucesso');
 });
 
 require __DIR__ . '/auth.php';
