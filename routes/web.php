@@ -68,6 +68,15 @@ Route::resource('setor', SetorController::class)->middleware(['auth']);
 
 Route::get('/dashboard', function () {
     $setores = Setor::all();
+    if (Auth::user()->tipo == 3) {
+        return redirect(url('recepcao'));
+    }
+    if (Auth::user()->tipo == 2) {
+        return redirect(url('sistema/atendente'));
+    }
+    if (Auth::user()->tipo == 1) {
+        return redirect(url('usuarios'));
+    }
     return view('cidadao.index', compact('setores'));
 })->middleware(['auth'])->name('dashboard');
 

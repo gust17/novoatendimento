@@ -54,7 +54,7 @@
                             <a href="{{ url('dashboard') }}" class="navbar-brand"><img
                                     class="img img-responsive" width="30px" src="{{ url('logo.png') }}" alt="">
                             @else
-                                <a href="{{ url('admin/dashboard') }}" class="navbar-brand"
+                                <a href="{{ url('dashboard') }}" class="navbar-brand"
                                     style="margin-top: -10px"><img class="img img-responsive" width="30px"
                                         src="{{ url('logo.png') }}" alt="">
                         @endif
