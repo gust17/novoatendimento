@@ -106,7 +106,7 @@
                                         <td> <a
                                                 href="{{ url('responder', $atendimento->id) }}">{{ $atendimento->setor->name }}</a>
                                         </td>
-                                        <td>{{ $atendimento->agenda->data }} -
+                                        <td>{{ $atendimento->agenda->data_formated }} -
                                             {{ $atendimento->agenda->hora }}
                                         </td>
 
