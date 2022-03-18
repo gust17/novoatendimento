@@ -172,7 +172,7 @@ Route::get('recepcao/abrir/{id}', function ($id) {
 Route::post('buscarcpf', function (HttpRequest $request) {
     $request->validate([
 
-        'cpf' => ['required', 'cpf', 'unique:users'],
+        'cpf' => ['required', 'cpf'],
     ]);
 
     $usuario = User::where('cpf', $request->cpf)->first();
