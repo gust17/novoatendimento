@@ -22,7 +22,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('buscadados/{id}', function ($id) {
-    $agendas = Agenda::where("aberto", 0)->where("setor_id", $id)->orderBy('data')->get();
+    $hoje = Carbon::now();
+    $agendas = Agenda::where("aberto", 0)->where("setor_id", $id)->whereDate('data', '>=', $hoje)->orderBy('data')->get();
 
     $dados = [];
 
