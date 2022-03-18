@@ -180,6 +180,7 @@
         background-repeat: no-repeat;
         background-size: cover;">
             @include('sweetalert::alert')
+            @include('flash-message')
             @yield('content')
             <!-- /.container -->
         </div>
