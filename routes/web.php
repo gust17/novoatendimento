@@ -200,7 +200,7 @@ Route::get('recepcao/geraratendimento/{user}/setor/{setor}', function ($user, $s
     $hoje = Carbon::now();
     $agendas = Agenda::where("aberto", 0)->where("setor_id", $setor->id)->whereDate('data', '>=', $hoje)->orderBy('data')->get();
 
-    return view('recepcionista.geraratendimentofechado', compact('usuario', 'setor','agendas'));
+    return view('recepcionista.geraratendimentofechado', compact('usuario', 'setor', 'agendas'));
 });
 
 Route::post('recepcao/geraratendimento', function (HttpRequest $request) {
@@ -246,6 +246,12 @@ Route::post('recepcao/caduser', function (HttpRequest $request) {
     $request['password'] = bcrypt($request->cpf);
     $request['cpf'] = preg_replace("/[^0-9]/", "", $request->cpf);
     $user = User::create($request->all());
+
+    $setor = Setor::find($request->setor_id);
+
+    if ($setor->aberto == 0) {
+        return redirect(url('recepcao/geraratendimento/'.$user->id.'/setor/'.$setor->id));
+    }
 
     $gravaagenda = [
         'data' => Carbon::now(),
