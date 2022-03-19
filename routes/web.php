@@ -191,11 +191,16 @@ Route::get('recepcao/geraratendimento/{user}/setor/{setor}', function ($user, $s
     $usuario = User::find($user);
     $setor = Setor::find($setor);
 
+
+
     if ($setor->aberto == 1) {
         return view('recepcionista.geraratendimento', compact('usuario', 'setor'));
     }
 
-    return view('recepcionista.geraratendimentofechado', compact('usuario', 'setor'));
+    $hoje = Carbon::now();
+    $agendas = Agenda::where("aberto", 0)->where("setor_id", $setor->id)->whereDate('data', '>=', $hoje)->orderBy('data')->get();
+
+    return view('recepcionista.geraratendimentofechado', compact('usuario', 'setor','agendas'));
 });
 
 Route::post('recepcao/geraratendimento', function (HttpRequest $request) {

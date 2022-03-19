@@ -9,11 +9,6 @@
                 <h3 class="panel-title">Dados para Agendamento</h3>
             </div>
             <div class="panel-body">
-                <p>Usuario: {{ $usuario->name }}</p>
-                <p>CPF: {{ $usuario->cpf }}</p>
-                <p>Setor: {{ $setor->name }}</p>
-            </div>
-            <div class="panel-footer">
                 <div class="col-md-12 continua">
                     <div class="panel">
                         <div class="panel-heading">Selecione o Dia/Horario para o seu Atendimento</div>
@@ -32,7 +27,15 @@
                                 <br>
 
                                 <div class="form-group">
-                                    <select class="form-control boleado" name="agenda" id="agenda"></select>
+                                    <select class="form-control boleado" name="agenda" id="agenda">
+                                        <option value=""></option>
+                                        @forelse ($agendas as $agenda)
+                                            <option value="{{ $agenda->id }}">{{ $agenda->data_formated }} -
+                                                {{ $agenda->hora }}</option>
+
+                                        @empty
+                                        @endforelse
+                                    </select>
                                 </div>
                                 <br>
                                 <div class="form-group">
@@ -74,6 +77,9 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="panel-footer">
+
 
             </div>
         </div>
