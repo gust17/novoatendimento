@@ -8,7 +8,7 @@
 
         <div class="col-md-12 continua">
             <div class="panel">
-                <div class="panel-heading">{{$user->name}}</div>
+                <div class="panel-heading">{{$usuario->name}}</div>
                 <div id="cadastro" class="panel-body">
 
 
@@ -17,7 +17,7 @@
                         @csrf
 
 
-                        <input type="hidden" name="user_id" value="{{$user->id}}">
+                        <input type="hidden" name="usuario_id" value="{{$usuario->id}}">
 
                         <!-- Email Address -->
 
@@ -55,7 +55,7 @@
                             <label for="">Outorgantes</label>
                             <select class="form-control" name="terceiro_id" id="">
                                 <option value=""></option>
-                                @forelse ($user->terceiros as $terceiro)
+                                @forelse ($usuario->terceiros as $terceiro)
                                     <option value="{{ $terceiro->id }}">{{ $terceiro->name }}</option>
                                 @empty
                                 @endforelse
