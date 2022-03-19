@@ -23,8 +23,12 @@
                                             {{ $setor->name }}
                                         </div>
                                         <div class="panel-body">
-                                            <a class="btn btn-success btn-block"
-                                                href="{{ url('recepcao/abrir', $setor->id) }}">Selecionar</a>
+                                            @if ($setor->aberto == 1)
+                                                <a class="btn btn-success btn-block"
+                                                    href="{{ url('recepcao/abrir', $setor->id) }}">Selecionar</a>
+                                            @else
+                                            @endif
+
                                         </div>
                                     </div>
                                 </div>
