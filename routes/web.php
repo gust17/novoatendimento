@@ -152,7 +152,7 @@ Route::post('terceiro', function (HttpRequest $request) {
 Route::get('recepcao', function () {
 
     $atendimentos = Agenda::whereHas('atendimento')->where("data", date('Y-m-d'))->get();
-    $setores = Setor::where('aberto', 1)->get();
+    $setores = Setor::all();
     //  dd($atendimentos);
     return view('recepcionista.index', compact('atendimentos', 'setores'));
 })->middleware(['auth']);
