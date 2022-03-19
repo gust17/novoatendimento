@@ -24,7 +24,8 @@
                         <br>
 
                         <div class="form-group">
-                            <select placeholder="Selecione o Dia/Horario para o seu Atendimento no {{ $setor->name }}"
+                            <label for="">Selecione o Dia/Horario para o seu Atendimento no {{ $setor->name }}</label>
+                            <select placeholder=""
                                 class="form-control boleado" name="agenda" id="agenda">
                                 <option value=""></option>
                                 @forelse ($agendas as $agenda)

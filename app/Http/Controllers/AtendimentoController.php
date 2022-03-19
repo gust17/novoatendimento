@@ -51,7 +51,9 @@ class AtendimentoController extends Controller
 
 
             $agenda->fill(['aberto' => 1]);
-            $agenda->save();
+            //$agenda->save();
+
+            dd($request->all());
             Atendimento::create($request->all());
 
             return redirect(url('dashboard'))
