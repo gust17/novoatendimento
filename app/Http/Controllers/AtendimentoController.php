@@ -54,12 +54,12 @@ class AtendimentoController extends Controller
             $agenda->save();
             Atendimento::create($request->all());
 
-            return redirect()->back()
+            return redirect(url('dashboard'))
                 ->with('success', 'Created successfully!');
         } else {
-            return redirect()->back()
+            return redirect(url('dashboard'))
                 ->with('error', 'Dia e Horario ja preenchidos');
-            return redirect()->back();
+            return redirect(url('dashboard'));
         }
     }
 
