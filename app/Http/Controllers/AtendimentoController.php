@@ -45,7 +45,7 @@ class AtendimentoController extends Controller
         //dd($request->all());
         $agenda = Agenda::find($request->agenda);
         if ($agenda->aberto == 0) {
-            $request['agenda_id'] = $request->agenda;
+            $request['agenda_id'] = $agenda->id;
             $request['setor_id'] = $agenda->setor_id;
 
 
@@ -53,7 +53,7 @@ class AtendimentoController extends Controller
             $agenda->fill(['aberto' => 1]);
           //  $agenda->save();
 
-            dd($request->all());
+           // dd($request->all());
             Atendimento::create($request->all());
 
             return redirect(url('dashboard'))
