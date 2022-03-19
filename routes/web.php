@@ -191,7 +191,11 @@ Route::get('recepcao/geraratendimento/{user}/setor/{setor}', function ($user, $s
     $usuario = User::find($user);
     $setor = Setor::find($setor);
 
-    return view('recepcionista.geraratendimento', compact('usuario', 'setor'));
+    if ($setor->aberto == 1) {
+        return view('recepcionista.geraratendimento', compact('usuario', 'setor'));
+    }
+
+    return view('recepcionista.geraratendimentofechado', compact('usuario', 'setor'));
 });
 
 Route::post('recepcao/geraratendimento', function (HttpRequest $request) {
