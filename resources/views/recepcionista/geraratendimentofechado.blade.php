@@ -17,7 +17,7 @@
                         @csrf
 
 
-                        <input type="hidden" name="usuario_id" value="{{$usuario->id}}">
+                        <input type="hidden" name="user_id" value="{{$usuario->id}}">
 
                         <!-- Email Address -->
 
