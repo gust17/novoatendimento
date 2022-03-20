@@ -11,7 +11,7 @@
                     <h4 class="modal-title">Modal Header</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('changePasswordPost') }}">
+                    <form class="form-horizontal" method="POST" action="{{ url('changePasswordPost') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('current-password') ? ' has-error' : '' }}">
