@@ -1,4 +1,4 @@
-@extends('painel.padrao')
+@extends('padrao.padrao')
 
 @section('content')
     <br><br>
