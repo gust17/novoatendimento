@@ -1,35 +1,6 @@
 @extends('padrao.padrao')
 
 @section('content')
-    <div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title"> Alteração de Senha</h4>
-                </div>
-                <div class="modal-body">
-                    <form class="form-horizontal" method="POST" action="{{ url('atualizasenha') }}">
-                        {{ csrf_field() }}
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button class="btn btn-primary">
-                                    Alterar Senha
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-
-        </div>
-    </div>
     <br><br>
 
     <div class="container">
@@ -59,11 +30,6 @@
                     <label for="">Telefone:</label>
                     <label for="">{{ Auth::user()->telefone }}</label>
                 </div>
-                <div class="form-group">
-                    <button data-toggle="modal" data-target="#myModal">Alterar Senha</button>
-                </div>
-
-
             </div>
         </div>
 
