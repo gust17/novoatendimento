@@ -250,7 +250,7 @@ Route::post('recepcao/caduser', function (HttpRequest $request) {
     $setor = Setor::find($request->setor_id);
 
     if ($setor->aberto == 0) {
-        return redirect(url('recepcao/geraratendimento/'.$user->id.'/setor/'.$setor->id));
+        return redirect(url('recepcao/geraratendimento/' . $user->id . '/setor/' . $setor->id));
     }
 
     $gravaagenda = [
@@ -317,6 +317,10 @@ Route::get('admin/agenda/delete/{id}', function ($id) {
     Agenda::destroy($id);
 
     return redirect()->back()->with('success', 'Agenda deletada com sucesso');
+});
+
+Route::get('minhaconta', function () {
+    return view('minhaconta');
 });
 
 require __DIR__ . '/auth.php';
