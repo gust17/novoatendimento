@@ -11,7 +11,7 @@
                     <h4 class="modal-title"> Alteração de Senha</h4>
                 </div>
                 <div class="modal-body">
-                    <form class="form-horizontal" method="POST" action="{{url('atualizasenha')}}">
+                    <form class="form-horizontal" method="POST" action="{{ url('atualizasenha') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('current-password') ? ' has-error' : '' }}">
@@ -55,7 +55,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button class="btn btn-primary">
                                     Alterar Senha
                                 </button>
                             </div>
