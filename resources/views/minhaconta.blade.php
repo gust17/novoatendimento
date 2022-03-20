@@ -98,7 +98,7 @@
                         <label for="">{{ Auth::user()->telefone }}</label>
                     </div>
                     <div class="form-group">
-                        <button>Alterar Senha</button>
+                        <button data-toggle="modal" data-target="#myModal">Alterar Senha</button>
                     </div>
 
 
