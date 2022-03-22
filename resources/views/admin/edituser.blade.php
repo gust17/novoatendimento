@@ -51,6 +51,12 @@
                                     <input class="form-control" type="text" name="cpf" value="{{ $user->cpf }}">
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="col-sm-2" for="">Senha</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="password" name="password">
+                                </div>
+                            </div>
 
 
                             <div class="form-group">
