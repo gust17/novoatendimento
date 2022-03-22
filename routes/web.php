@@ -305,6 +305,9 @@ Route::post('admin/user/edit', function (HttpRequest $request) {
 
     ]);
 
+    if (empty($request['password'])) {
+        unset($request['password']);
+    }
 
     $user = User::find($request->id);
 
