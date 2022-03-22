@@ -307,6 +307,8 @@ Route::post('admin/user/edit', function (HttpRequest $request) {
 
     if (empty($request['password'])) {
         unset($request['password']);
+    } else {
+        $request['password'] = bcrypt($request['password']);
     }
 
     $user = User::find($request->id);
