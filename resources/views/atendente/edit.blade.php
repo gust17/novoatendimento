@@ -15,28 +15,18 @@
                     <div class="box-header">Cadastrar Atendente</div>
                     <div class="box-body">
 
-                        <form action="{{ route('atendente.store') }}" method="POST">
+                        <form action="" method="POST">
                             @csrf
                             <div class="form-group">
                                 <label for="name">Usuario</label>
-                                <select class="form-control users" name="user_id" id="">
-                                    <option value=""></option>
-                                    @forelse ($users as $user)
-                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
-                                    @empty
-                                    @endforelse
-                                </select>
+                                <br>
+                                <label for="">{{$atendente->user->name}}</label>
                             </div>
 
                             <div class="form-group">
                                 <label for="setor">Setor</label>
-                                <select class="form-control setors" name="setor_id" id="">
-                                    <option value=""></option>
-                                    @forelse ($setors as $setor)
-                                        <option value="{{ $setor->id }}">{{ $setor->name }}</option>
-                                    @empty
-                                    @endforelse
-                                </select>
+                                <br>
+                                <label for="">{{$atendente->setor->name}}</label>
 
                             </div>
                             <div class="form-group">
