@@ -52,7 +52,7 @@
                                             <td>
                                                 <a class="btn btn-primary" href="{{ url('agenda', $atendente->id) }}">Agenda</a>
                                                 <a class="btn btn-warning"
-                                                    href="{{ url('admin/atendente/edit', $atendente->id) }}">Editar</a>
+                                                    href="{{ route('atendente.edit',$atendente) }}">Editar</a>
                                                 <a class="btn btn-danger"
                                                     href="{{ url('admin/atendente/delete', $atendente->id) }}">Excluir</a>
                                             </td>
