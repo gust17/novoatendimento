@@ -75,7 +75,9 @@ class AtendenteController extends Controller
      */
     public function edit(Atendente $atendente)
     {
-        //
+
+        return view('atendente.edit',compact('atendente'));
+
     }
 
     /**
