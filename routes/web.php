@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AtendenteController;
 use App\Http\Controllers\AtendimentoController;
+use App\Http\Controllers\DisponibilidadeController;
 use App\Http\Controllers\SetorController;
 use App\Models\Agenda;
 use App\Models\Atendimento;
@@ -31,13 +32,46 @@ use function GuzzleHttp\Promise\all;
 |
 */
 
-Route::get('/', function () {
-    //Alert::success('hello');
-    $setores = Setor::where('aberto', 0)->get();
-    return view('cidadao.index', compact('setores'));
+Route::get('testeindex', function () {
+    $now = \Carbon\Carbon::now();
+    //echo $now->year;
+    // echo $now->month;
+    $agora = \Carbon\Carbon::now()->format('H:i:m');
+
+
+    $inicio = \App\Models\Disponibilidade::orderBy('dia', 'asc')->whereMonth('dia', $now->month)->first();
+    $fim = \App\Models\Disponibilidade::orderBy('dia', 'desc')->whereMonth('dia', $now->month)->first();
+    $dados = [];
+
+    if (isset($inicio)) {
+
+
+        $begin = \Carbon\Carbon::now();
+
+
+        $end = \Carbon\Carbon::createFromDate($fim->dia)->modify('+1 day');
+
+        //dd($end);
+
+        for ($i = $begin; $i <= $end; $i->modify('+1 day')) {
+
+
+            $total = \App\Models\Disponibilidade::whereDate('dia', $i->format("Y-m-d"))->get();
+            if (count($total) > 0) {
+                $dados[] = ['busca' => $i->format("Y-m-d"), 'name' => $i->locale('pt_br')->isoFormat('dddd, MMMM D  YYYY'), 'eventos' => $total];
+            }
+        }
+    }
+
+    $dia = \Carbon\Carbon::now()->format('Y-m-d');
+    //dd($dia);
+    // dd($dados);
+
+
+    return view('index', compact('dados', 'agora', 'dia'));
 })->middleware(['auth']);
 Route::resource('atendente', AtendenteController::class)->middleware(['auth']);
-
+Route::resource('disponibilidade', DisponibilidadeController::class)->middleware(['auth']);
 Route::get('agenda/{id}', function ($id) {
 
     $setor = Setor::find($id);
@@ -308,7 +342,7 @@ Route::post('admin/user/edit', function (HttpRequest $request) {
     if (empty($request['password'])) {
         unset($request['password']);
     } else {
-    $request['password'] = bcrypt($request['password']);
+        $request['password'] = bcrypt($request['password']);
     }
 
     $user = User::find($request->id);

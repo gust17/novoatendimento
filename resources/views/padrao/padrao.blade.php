@@ -83,6 +83,7 @@
                                         <li><a href="{{ route('setor.index') }}">Setor</a></li>
                                         <li><a href="{{ route('atendente.index') }}">Atendentes</a></li>
                                         <li><a href="{{ url('usuarios') }}">Usuarios</a></li>
+                                        <li><a href="{{ route('disponibilidade.index') }}">Disponibilidade</a></li>
 
 
                                     </ul>
@@ -173,7 +174,7 @@
         <!-- Full Width Column -->
         <div class="content-wrapper">
             @include('sweetalert::alert')
-            @include('flash-message')
+
             @yield('content')
             <!-- /.container -->
         </div>
