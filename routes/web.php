@@ -32,6 +32,10 @@ use function GuzzleHttp\Promise\all;
 |
 */
 
+Route::get('/', function () {
+    redirect(url('/dashboard'));
+});
+
 Route::get('testeindex', function () {
     $now = \Carbon\Carbon::now();
     //echo $now->year;
@@ -69,7 +73,7 @@ Route::get('testeindex', function () {
 
 
     return view('index', compact('dados', 'agora', 'dia'));
-})->middleware(['auth']);
+});
 Route::resource('atendente', AtendenteController::class)->middleware(['auth']);
 Route::resource('disponibilidade', DisponibilidadeController::class)->middleware(['auth']);
 Route::get('agenda/{id}', function ($id) {
@@ -113,7 +117,7 @@ Route::get('/dashboard', function () {
         return redirect(url('usuarios'));
     }
 
-    return redirect(url('/'));
+    return redirect(url('/cidadao'));
 })->middleware(['auth'])->name('dashboard');
 
 
