@@ -121,6 +121,11 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 
+Route::get('cidadao', function () {
+    $setores = Setor::where("aberto",0)->get();
+    return view('cidadao.index',compact('setores'));
+})->middleware(['auth']);
+
 Route::get('sistema/atendente', function () {
     return view('sistema.atendente');
 })->middleware(['auth']);
