@@ -33,7 +33,7 @@
                                             <td>
 
 
-                                                    <a href="{{ url("agendar") }}"
+                                                    <a href="{{ url("receberatendimento",$evento->setor) }}"
                                                         class="btn btn-success">Agendar</a>
 
                                             </td>
@@ -92,60 +92,7 @@
             @endforelse
         </div>
 
-        @forelse ($dados as $dado)
-            <div class="panel-group">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-toggle="collapse" href="#collapse{{ $dado['busca'] }}">{{ $dado['name'] }}</a>
-                        </h4>
-                    </div>
-                    <div id="collapse{{ $dado['busca'] }}" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Serviço</th>
-                                            <th>Sub Serviço</th>
-                                            <th>Inicio</th>
-                                            <th>Termino</th>
-                                            <th>Atendimento</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($dado['eventos'] as $evento)
-                                            <tr>
-                                                <td>{{ $evento->setor->name }}</td>
-                                                <td>
-                                                    @if ($evento->subsetor)
-                                                        {{ $evento->subsetor->name }}
-                                                    @endif
-                                                </td>
-                                                <td>{{ $evento->inicio }}</td>
-                                                <td>{{ $evento->fim }}</td>
 
-                                                <td>
-
-                                                    @if ($agora >= $evento->inicio && $agora <= $evento->fim && $dia == $evento->dia)
-                                                        <a href="{{ backpack_url('novoatendimento', $evento->id) }}"
-                                                            class="btn btn-success">Iniciar</a>
-                                                    @endif
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-
-        @empty
-        @endforelse
 
 
     </div>

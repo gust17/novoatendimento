@@ -122,8 +122,8 @@ Route::get('/dashboard', function () {
 
 
 Route::get('cidadao', function () {
-    $setores = Setor::where("aberto",0)->get();
-    return view('cidadao.index',compact('setores'));
+    $setores = Setor::where("aberto", 0)->get();
+    return view('cidadao.index', compact('setores'));
 })->middleware(['auth']);
 
 Route::get('sistema/atendente', function () {
@@ -246,6 +246,14 @@ Route::get('recepcao/geraratendimento/{user}/setor/{setor}', function ($user, $s
 
     return view('recepcionista.geraratendimentofechado', compact('usuario', 'setor', 'agendas'));
 });
+Route::get('receberatendimento/{id}', function ($id) {
+    $setor = Setor::find($id);
+    $user = Auth::user()->id;
+
+    //dd($user);
+
+    return redirect(url("recepcao/geraratendimento/$user/setor/$setor->id"));
+})->middleware(['auth']);
 
 Route::post('recepcao/geraratendimento', function (HttpRequest $request) {
 
