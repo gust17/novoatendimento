@@ -33,10 +33,10 @@ use function GuzzleHttp\Promise\all;
 */
 
 Route::get('/', function () {
-    redirect(url('/dashboard'));
+    redirect(url('/inicio'));
 });
 
-Route::get('testeindex', function () {
+Route::get('inicio', function () {
     $now = \Carbon\Carbon::now();
     //echo $now->year;
     // echo $now->month;
