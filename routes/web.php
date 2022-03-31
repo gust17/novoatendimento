@@ -33,7 +33,7 @@ use function GuzzleHttp\Promise\all;
 */
 
 Route::get('/', function () {
-    redirect(url('/inicio'));
+    return redirect(url('/inicio'));
 });
 
 Route::get('inicio', function () {
